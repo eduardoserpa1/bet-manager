@@ -11,9 +11,9 @@ import lombok.Data;
 @Table(name = "bm_bet")
 public class BetModel {
     @Id
-    private Integer Id;
-    private Integer IdUser;
-    private Integer IdSortition;
-    private String Numbers;
-    private Boolean Result;
+    private Integer id;
+    private Integer idUser;
+    private Integer idSortition;
+    private String numbers;
+    private Boolean result;
 }

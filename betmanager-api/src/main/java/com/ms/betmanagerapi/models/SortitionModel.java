@@ -1,8 +1,6 @@
 package com.ms.betmanagerapi.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Data
@@ -10,6 +8,7 @@ import lombok.Data;
 @Table(name = "bm_sortition")
 public class SortitionModel {
     @Id
-    private Integer Id;
-    private String Numbers;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
+    private String numbers;
 }

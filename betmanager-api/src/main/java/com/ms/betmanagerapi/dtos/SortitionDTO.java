@@ -6,7 +6,7 @@ import lombok.Data;
 @Data
 public class SortitionDTO {
     @NotBlank
-    private Integer Id;
+    private Integer id;
     @NotBlank
-    private String Numbers;
+    private String numbers;
 }

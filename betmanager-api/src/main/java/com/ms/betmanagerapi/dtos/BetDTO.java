@@ -6,13 +6,13 @@ import lombok.Data;
 @Data
 public class BetDTO {
     @NotBlank
-    private Integer Id;
+    private Integer id;
     @NotBlank
-    private Integer IdUser;
+    private Integer idUser;
     @NotBlank
-    private Integer IdSortition;
+    private Integer idSortition;
     @NotBlank
-    private String Numbers;
+    private String numbers;
     @NotBlank
-    private Boolean Result;
+    private Boolean result;
 }
