@@ -9,4 +9,6 @@ public class SortitionDTO {
     private Integer id;
     @NotBlank
     private String numbers;
+    @NotBlank
+    private Boolean isFinished;
 }

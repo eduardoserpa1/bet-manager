@@ -29,4 +29,24 @@ public class ValidationService {
         return userModel.isPresent() && sortitionModel.isPresent();
     }
 
+    public Boolean validadeBetNumbers(String numbers){
+        String[] split = numbers.split(",");
+
+        if(split.length != 5)
+            return false;
+
+        for(int i = 0; i < split.length; i++){
+            Integer numberInteger = Integer.parseInt(split[i]);
+
+            if(numberInteger < 1 || numberInteger > 50)
+                return false;
+
+            for (int j = i+1; j < split.length; j++)
+                if(split[i].equals(split[j]))
+                    return false;
+        }
+
+        return true;
+    }
+
 }

@@ -11,17 +11,14 @@ import lombok.Data;
 @Table(name = "bm_bet")
 public class BetModel {
     @Id
-    @SequenceGenerator(name = "EntityTwoSequence", initialValue = 1000)
-    @GeneratedValue(generator = "EntityTwoSequence")
+    @SequenceGenerator(name = "betIdGenerator", initialValue = 1000)
+    @GeneratedValue(generator = "betIdGenerator")
     @Column(unique = true)
     private Integer id;
 
-    @Pattern(regexp = "^([0-9]{1,2},){4}[0-50]{1,2}$", message = "numbers must be formatted like '11,12,13,20,30' and contains exactly five numbers.")
+    @Pattern(regexp = "^[0-9]{1,2},[0-9]{1,2},[0-9]{1,2},[0-9]{1,2},[0-9]{1,2}$", message = "bet numbers must be formatted like '1,12,5,20,30' and contains exactly five numbers.")
     @NotNull
     private String numbers;
-
-    @NotNull
-    private Boolean result;
 
     @NotNull
     private Integer idUser;

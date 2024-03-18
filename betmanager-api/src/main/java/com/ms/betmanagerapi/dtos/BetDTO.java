@@ -8,11 +8,10 @@ public class BetDTO {
     @NotBlank
     private Integer id;
     @NotBlank
+    private String numbers;
+    @NotBlank
     private Integer idUser;
     @NotBlank
     private Integer idSortition;
-    @NotBlank
-    private String numbers;
-    @NotBlank
-    private Boolean result;
+
 }
