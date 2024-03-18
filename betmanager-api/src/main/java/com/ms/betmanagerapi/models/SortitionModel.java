@@ -14,7 +14,7 @@ public class SortitionModel {
     @Column(unique = true)
     private Integer id;
 
-    @Pattern(regexp = "^[0-9]{1,2},[0-9]{1,2},[0-9]{1,2},([0-9]{1,2},)+[0-9]{1,2}$", message = "sortition numbers must be formatted like '11,12,13,20,30' and contains exactly five numbers.")
+    @Pattern(regexp = "^[0-9]{1,2},[0-9]{1,2},[0-9]{1,2},([0-9]{1,2},){1,26}[0-9]{1,2}$", message = "sortition numbers must be formatted like '1,12,8,20,30' and contains numbers count greater than 5 and lesser than 30.")
     @NotNull
     private String numbers;
 

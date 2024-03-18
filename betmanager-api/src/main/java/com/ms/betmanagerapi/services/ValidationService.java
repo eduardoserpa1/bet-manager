@@ -29,11 +29,8 @@ public class ValidationService {
         return userModel.isPresent() && sortitionModel.isPresent();
     }
 
-    public Boolean validadeBetNumbers(String numbers){
+    public Boolean validadeNumbers(String numbers){
         String[] split = numbers.split(",");
-
-        if(split.length != 5)
-            return false;
 
         for(int i = 0; i < split.length; i++){
             Integer numberInteger = Integer.parseInt(split[i]);

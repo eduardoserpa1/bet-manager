@@ -13,13 +13,33 @@ public class BetService {
 
     @Autowired
     BetRepository betRepository;
+    @Autowired
+    ValidationService validationService;
+    @Autowired
+    ProcessingService processingService;
 
-    public BetModel create(BetModel betModel){
-        return betRepository.save(betModel);
-    }
 
     public List<BetModel> getAll(){
         return betRepository.findAll();
+    }
+
+    public BetModel create(BetModel betModel){
+        if(validationService.validadeBetReferences(betModel))
+            if (validationService.validadeNumbers(betModel.getNumbers()))
+                return betRepository.save(betModel);
+        return null;
+    }
+
+    public BetModel createLittleSurprise(BetModel betModel){
+        if(validationService.validadeBetReferences(betModel)) {
+            do {
+                betModel.setNumbers(processingService.getLittleSurprise());
+            } while (!validationService.validadeNumbers(betModel.getNumbers()));
+
+            return betRepository.save(betModel);
+        }
+
+        return null;
     }
 
 }

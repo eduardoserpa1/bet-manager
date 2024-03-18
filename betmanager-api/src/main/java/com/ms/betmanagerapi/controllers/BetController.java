@@ -33,14 +33,11 @@ public class BetController {
 
     @PostMapping("/create")
     public ResponseEntity<BetModel> create(@RequestBody BetDTO betDTO){
-
         BetModel betModel = new BetModel();
         BeanUtils.copyProperties(betDTO, betModel);
-        if(validationService.validadeBetReferences(betModel))
-            if(validationService.validadeBetNumbers(betModel.getNumbers()))
-                return new ResponseEntity<>(betService.create(betModel), HttpStatus.CREATED);
 
-        return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        BetModel betModelResponse = betService.create(betModel);
+        return new ResponseEntity<>(betModelResponse, HttpStatus.CREATED);
     }
 
     @PostMapping("/createLittleSurprise")
@@ -48,16 +45,8 @@ public class BetController {
         BetModel betModel = new BetModel();
         BeanUtils.copyProperties(betDTO, betModel);
 
-        if(validationService.validadeBetReferences(betModel)) {
-            do {
-                String l = processingService.getLittleSurprise();
-                System.out.println(l);
-                betModel.setNumbers(l);
-            }while(!validationService.validadeBetNumbers(betModel.getNumbers()));
+        BetModel betModelResponse = betService.createLittleSurprise(betModel);
+        return new ResponseEntity<>(betModelResponse, HttpStatus.CREATED);
 
-            return new ResponseEntity<>(betService.create(betModel), HttpStatus.CREATED);
-        }
-
-        return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }

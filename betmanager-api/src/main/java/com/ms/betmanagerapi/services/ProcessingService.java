@@ -9,12 +9,18 @@ public class ProcessingService {
         StringBuilder str = new StringBuilder();
 
         for (int i = 0; i < 4; i++) {
-            str.append((int) (Math.random() * 50) + 1);
+            str.append(getRandomNumber());
             str.append(",");
         }
-        str.append((int) (Math.random() * 50) + 1);
+        str.append(getRandomNumber());
 
         return str.toString();
     }
+
+    public String getRandomNumber(){
+        return String.valueOf((int) (Math.random() * 50) + 1);
+    }
+
+
 
 }
