@@ -42,4 +42,8 @@ public class BetService {
         return null;
     }
 
+    public List<BetModel> getAllBySortitionId(Integer id){
+        return betRepository.getAllBySortitionId(id);
+    }
+
 }

@@ -1,7 +1,9 @@
 package com.ms.betmanagerapi.controllers;
 
 import com.ms.betmanagerapi.dtos.SortitionDTO;
+import com.ms.betmanagerapi.models.BetModel;
 import com.ms.betmanagerapi.models.SortitionModel;
+import com.ms.betmanagerapi.services.BetService;
 import com.ms.betmanagerapi.services.ProcessingService;
 import com.ms.betmanagerapi.services.SortitionService;
 import com.ms.betmanagerapi.services.ValidationService;
@@ -26,11 +28,16 @@ public class SortitionController {
     @Autowired
     ValidationService validationService;
 
+//    @Autowired
+//    BetService betService;
+
     @GetMapping("/")
     public ResponseEntity<List<SortitionModel>> getAll(){
         List<SortitionModel> allSortitions = sortitionService.getAll();
         return new ResponseEntity<>(allSortitions, HttpStatus.OK);
     }
+
+
 
     @PostMapping("/createPredefined")
     public ResponseEntity<SortitionModel> createPredefined(@RequestBody SortitionDTO sortitionDTO){
@@ -54,6 +61,15 @@ public class SortitionController {
         SortitionModel sortitionModel = sortitionService.getById(sortitionId);
 
         SortitionModel sortitionModelResponse = sortitionService.addRandomNumber(sortitionModel);
+        return new ResponseEntity<>(sortitionModelResponse, HttpStatus.OK);
+    }
+
+    @PutMapping("/addPredefinedNumberById/{id},{predefinedNumber}")
+    public ResponseEntity<SortitionModel> addPredefinedNumberById(@PathVariable(value = "id") Integer sortitionId,
+                                                                  @PathVariable(value = "predefinedNumber") Integer predefinedNumber){
+        SortitionModel sortitionModel = sortitionService.getById(sortitionId);
+
+        SortitionModel sortitionModelResponse = sortitionService.addPredefinedNumber(sortitionModel,predefinedNumber);
         return new ResponseEntity<>(sortitionModelResponse, HttpStatus.OK);
     }
 

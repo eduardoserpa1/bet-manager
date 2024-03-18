@@ -21,7 +21,6 @@ public class BetController {
     BetService betService;
     @Autowired
     ValidationService validationService;
-
     @Autowired
     ProcessingService processingService;
 
