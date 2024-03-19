@@ -37,7 +37,7 @@ public class SortitionController {
     }
 
     @PostMapping("/createRandom")
-    public ResponseEntity<SortitionModel> createRandomBet(@RequestBody SortitionDTO sortitionDTO){
+    public ResponseEntity<SortitionModel> createRandom(@RequestBody SortitionDTO sortitionDTO){
         SortitionModel sortitionModel = new SortitionModel();
         BeanUtils.copyProperties(sortitionDTO,sortitionModel);
 
@@ -46,9 +46,8 @@ public class SortitionController {
     }
 
     @PutMapping("/addRandomNumberById/{id}")
-    public ResponseEntity<SortitionModel> addNumberById(@PathVariable(value = "id") Integer sortitionId){
+    public ResponseEntity<SortitionModel> addRandomNumberById(@PathVariable(value = "id") Integer sortitionId){
         SortitionModel sortitionModel = sortitionService.getById(sortitionId);
-
         SortitionModel sortitionModelResponse = sortitionService.addRandomNumber(sortitionModel);
         return new ResponseEntity<>(sortitionModelResponse, HttpStatus.OK);
     }
@@ -57,7 +56,6 @@ public class SortitionController {
     public ResponseEntity<SortitionModel> addPredefinedNumberById(@PathVariable(value = "id") Integer sortitionId,
                                                                   @PathVariable(value = "predefinedNumber") Integer predefinedNumber){
         SortitionModel sortitionModel = sortitionService.getById(sortitionId);
-
         SortitionModel sortitionModelResponse = sortitionService.addPredefinedNumber(sortitionModel,predefinedNumber);
         return new ResponseEntity<>(sortitionModelResponse, HttpStatus.OK);
     }

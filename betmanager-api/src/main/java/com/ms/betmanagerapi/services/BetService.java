@@ -7,6 +7,7 @@ import com.ms.betmanagerapi.models.UserModel;
 import com.ms.betmanagerapi.repositories.BetRepository;
 import com.ms.betmanagerapi.repositories.SortitionRepository;
 import com.ms.betmanagerapi.repositories.UserRepository;
+import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -55,12 +56,22 @@ public class BetService {
 
         return null;
     }
-
     public Boolean validateBetReferences(BetModel betModel){
-        Optional<UserModel> userModel = userRepository.findById(betModel.getIdUser());
-        Optional<SortitionModel> sortitionModel = sortitionRepository.findById(betModel.getIdSortition());
+        List<UserModel> users = userRepository.findAll();
+        List<SortitionModel> sortitions = sortitionRepository.findAll();
 
-        return userModel.isPresent() && sortitionModel.isPresent();
+        boolean haveUser = false;
+        boolean haveSortition = false;
+
+        for (UserModel u : users)
+            if(u.getId().equals(betModel.getIdUser()))
+                haveUser = true;
+
+        for (SortitionModel s : sortitions)
+            if(s.getId().equals(betModel.getIdSortition()))
+                haveSortition = true;
+
+        return haveUser && haveSortition;
     }
 
     public Boolean validateBetNumbers(String numbers){

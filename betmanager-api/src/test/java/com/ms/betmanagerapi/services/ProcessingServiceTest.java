@@ -21,13 +21,6 @@ public class ProcessingServiceTest {
     @Autowired
     ProcessingService processingService;
 
-
-    @BeforeEach
-    void setUp(){
-
-    }
-
-
     @Test
     @Order(1)
     @DisplayName("ProcessingService: validate if a sequence of numbers is valid: [1 - 50] and without duplicates")
