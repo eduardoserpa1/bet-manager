@@ -15,11 +15,10 @@ public class SortitionService {
     SortitionRepository sortitionRepository;
     @Autowired
     ProcessingService processingService;
-    @Autowired
-    ValidationService validationService;
+
 
     public SortitionModel create(SortitionModel sortitionModel){
-        if(validationService.validadeNumbers(sortitionModel.getNumbers()))
+        if(validadeNumbers(sortitionModel.getNumbers()))
             return sortitionRepository.save(sortitionModel);
         return null;
     }
@@ -32,7 +31,7 @@ public class SortitionService {
         do{
             numbers = sortitionModel.getNumbers() + "," + processingService.getRandomNumber();
             System.out.println(numbers);
-        }while(!validationService.validadeNumbers(numbers));
+        }while(!validadeNumbers(numbers));
 
         sortitionModel.setNumbers(numbers);
         return sortitionRepository.save(sortitionModel);
@@ -43,7 +42,7 @@ public class SortitionService {
 
 
         numbers = sortitionModel.getNumbers() + "," + predefinedNumber;
-        if(validationService.validadeNumbers(numbers)){
+        if(validadeNumbers(numbers)){
             sortitionModel.setNumbers(numbers);
             return sortitionRepository.save(sortitionModel);
         }
@@ -68,7 +67,7 @@ public class SortitionService {
     public SortitionModel createRandom(SortitionModel sortitionModel){
         do {
             sortitionModel.setNumbers(processingService.getLittleSurprise());
-        }while(!validationService.validadeNumbers(sortitionModel.getNumbers()));
+        }while(!validadeNumbers(sortitionModel.getNumbers()));
 
         return sortitionRepository.save(sortitionModel);
     }
@@ -80,5 +79,13 @@ public class SortitionService {
         return sortitionRepository.getById(id);
     }
 
+    public Boolean validadeNumbers(String numbers){
+        String[] split = numbers.split(",");
+
+        if (split.length < 5 || split.length > 30)
+            return false;
+
+        return processingService.validadeNumbersIntegrity(split);
+    }
 
 }

@@ -4,7 +4,6 @@ import com.ms.betmanagerapi.dtos.BetDTO;
 import com.ms.betmanagerapi.models.BetModel;
 import com.ms.betmanagerapi.services.BetService;
 import com.ms.betmanagerapi.services.ProcessingService;
-import com.ms.betmanagerapi.services.ValidationService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,8 +18,6 @@ public class BetController {
 
     @Autowired
     BetService betService;
-    @Autowired
-    ValidationService validationService;
     @Autowired
     ProcessingService processingService;
 

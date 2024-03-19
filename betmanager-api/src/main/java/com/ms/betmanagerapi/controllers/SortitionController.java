@@ -1,12 +1,9 @@
 package com.ms.betmanagerapi.controllers;
 
 import com.ms.betmanagerapi.dtos.SortitionDTO;
-import com.ms.betmanagerapi.models.BetModel;
 import com.ms.betmanagerapi.models.SortitionModel;
-import com.ms.betmanagerapi.services.BetService;
 import com.ms.betmanagerapi.services.ProcessingService;
 import com.ms.betmanagerapi.services.SortitionService;
-import com.ms.betmanagerapi.services.ValidationService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -24,12 +21,6 @@ public class SortitionController {
 
     @Autowired
     ProcessingService processingService;
-
-    @Autowired
-    ValidationService validationService;
-
-//    @Autowired
-//    BetService betService;
 
     @GetMapping("/")
     public ResponseEntity<List<SortitionModel>> getAll(){

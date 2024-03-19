@@ -36,7 +36,22 @@ public class ProcessingService {
         return false;
     }
 
-    private Boolean compareNumbers(String n1, String n2){
+    public Boolean validadeNumbersIntegrity(String[] split){
+        for(int i = 0; i < split.length; i++){
+            int numberInteger = Integer.parseInt(split[i]);
+
+            if(numberInteger < 1 || numberInteger > 50)
+                return false;
+
+            for (int j = i+1; j < split.length; j++)
+                if(split[i].equals(split[j]))
+                    return false;
+        }
+
+        return true;
+    }
+
+    public Boolean compareNumbers(String n1, String n2){
         String[] s1 = n1.split(",");
         String[] s2 = n2.split(",");
         
@@ -56,5 +71,6 @@ public class ProcessingService {
         
         return false;
     }
+
 
 }
