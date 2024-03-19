@@ -27,7 +27,7 @@ public class ApurationController {
     @PostMapping("/makeApuration/{id}")
     public ResponseEntity<SortitionModel> makeApuration(@PathVariable(value = "id") Integer sortitionId){
         SortitionModel sortitionModel = sortitionService.getById(sortitionId);
-        List<BetModel> bets = betService.getAllBySortitionId(sortitionId);
+        List<BetModel> bets = betService.getAllBetsBySortitionId(sortitionId);
         SortitionModel sortitionModelResponse = sortitionService.makeApuration(sortitionModel, bets);
         return new ResponseEntity<>(sortitionModelResponse, HttpStatus.OK);
     }

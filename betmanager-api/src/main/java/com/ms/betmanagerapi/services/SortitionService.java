@@ -16,9 +16,16 @@ public class SortitionService {
     @Autowired
     ProcessingService processingService;
 
+    public List<SortitionModel> getAll(){
+        return sortitionRepository.findAll();
+    }
+
+    public SortitionModel getById(Integer id){
+        return sortitionRepository.getById(id);
+    }
 
     public SortitionModel create(SortitionModel sortitionModel){
-        if(validadeNumbers(sortitionModel.getNumbers()))
+        if(validateSortitionNumbers(sortitionModel.getNumbers()))
             return sortitionRepository.save(sortitionModel);
         return null;
     }
@@ -30,8 +37,7 @@ public class SortitionService {
 
         do{
             numbers = sortitionModel.getNumbers() + "," + processingService.getRandomNumber();
-            System.out.println(numbers);
-        }while(!validadeNumbers(numbers));
+        }while(!validateSortitionNumbers(numbers));
 
         sortitionModel.setNumbers(numbers);
         return sortitionRepository.save(sortitionModel);
@@ -39,10 +45,8 @@ public class SortitionService {
 
     public SortitionModel addPredefinedNumber(SortitionModel sortitionModel, Integer predefinedNumber){
         String numbers;
-
-
         numbers = sortitionModel.getNumbers() + "," + predefinedNumber;
-        if(validadeNumbers(numbers)){
+        if(validateSortitionNumbers(numbers)){
             sortitionModel.setNumbers(numbers);
             return sortitionRepository.save(sortitionModel);
         }
@@ -67,25 +71,18 @@ public class SortitionService {
     public SortitionModel createRandom(SortitionModel sortitionModel){
         do {
             sortitionModel.setNumbers(processingService.getLittleSurprise());
-        }while(!validadeNumbers(sortitionModel.getNumbers()));
+        }while(!validateSortitionNumbers(sortitionModel.getNumbers()));
 
         return sortitionRepository.save(sortitionModel);
     }
-    public List<SortitionModel> getAll(){
-        return sortitionRepository.findAll();
-    }
 
-    public SortitionModel getById(Integer id){
-        return sortitionRepository.getById(id);
-    }
-
-    public Boolean validadeNumbers(String numbers){
+    public Boolean validateSortitionNumbers(String numbers){
         String[] split = numbers.split(",");
 
         if (split.length < 5 || split.length > 30)
             return false;
 
-        return processingService.validadeNumbersIntegrity(split);
+        return processingService.validateNumbersIntegrity(split);
     }
 
 }

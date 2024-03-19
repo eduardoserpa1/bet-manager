@@ -28,8 +28,6 @@ public class SortitionController {
         return new ResponseEntity<>(allSortitions, HttpStatus.OK);
     }
 
-
-
     @PostMapping("/createPredefined")
     public ResponseEntity<SortitionModel> createPredefined(@RequestBody SortitionDTO sortitionDTO){
         SortitionModel sortitionModel = new SortitionModel();

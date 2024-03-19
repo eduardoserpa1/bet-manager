@@ -34,17 +34,21 @@ public class BetService {
     }
 
     public BetModel create(BetModel betModel){
-        if(validadeBetReferences(betModel))
-            if (validadeNumbers(betModel.getNumbers()))
+        if(validateBetReferences(betModel))
+            if (validateBetNumbers(betModel.getNumbers()))
                 return betRepository.save(betModel);
         return null;
     }
 
+    public List<BetModel> getAllBetsBySortitionId(Integer id){
+        return betRepository.getAllBySortitionId(id);
+    }
+
     public BetModel createLittleSurprise(BetModel betModel){
-        if(validadeBetReferences(betModel)) {
+        if(validateBetReferences(betModel)) {
             do {
                 betModel.setNumbers(processingService.getLittleSurprise());
-            } while (!validadeNumbers(betModel.getNumbers()));
+            } while (!validateBetNumbers(betModel.getNumbers()));
 
             return betRepository.save(betModel);
         }
@@ -52,23 +56,19 @@ public class BetService {
         return null;
     }
 
-    public List<BetModel> getAllBySortitionId(Integer id){
-        return betRepository.getAllBySortitionId(id);
-    }
-
-    public Boolean validadeBetReferences(BetModel betModel){
+    public Boolean validateBetReferences(BetModel betModel){
         Optional<UserModel> userModel = userRepository.findById(betModel.getIdUser());
         Optional<SortitionModel> sortitionModel = sortitionRepository.findById(betModel.getIdSortition());
 
         return userModel.isPresent() && sortitionModel.isPresent();
     }
 
-    public Boolean validadeNumbers(String numbers){
+    public Boolean validateBetNumbers(String numbers){
         String[] split = numbers.split(",");
 
         if (split.length != 5)
             return false;
 
-        return processingService.validadeNumbersIntegrity(split);
+        return processingService.validateNumbersIntegrity(split);
     }
 }
