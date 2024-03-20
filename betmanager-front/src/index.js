@@ -3,12 +3,15 @@ import ReactDOM from 'react-dom/client';
 import { createGlobalStyle } from 'styled-components';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Routes, Route } from "react-router-dom"
+import Welcome from './routes/Welcome';
 import Home from './routes/Home';
+import Bet from './routes/Bet';
+import NewBet from './routes/NewBet';
 
 const GlobalStyle = createGlobalStyle`
   html,body {
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     margin: 0px;
     padding: 0px;
     overflow-x: hidden; 
@@ -26,6 +29,8 @@ const GlobalStyle = createGlobalStyle`
   }
 `
 
+
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
@@ -33,7 +38,10 @@ root.render(
 
     <BrowserRouter>
       <Routes>
+      <Route path='/' element={<Welcome />}></Route>
       <Route path='/home' element={<Home />}></Route>
+      <Route path='/bet/:id' element={<Bet />}></Route>
+      <Route path='/newbet/:id' element={<NewBet />}></Route>
       </Routes>
     </BrowserRouter>
     

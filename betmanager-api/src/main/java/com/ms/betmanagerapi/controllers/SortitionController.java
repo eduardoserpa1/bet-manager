@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/sortition")
 public class SortitionController {
 
@@ -21,6 +22,7 @@ public class SortitionController {
 
     @Autowired
     ProcessingService processingService;
+
 
     @GetMapping("/")
     public ResponseEntity<List<SortitionModel>> getAll(){
