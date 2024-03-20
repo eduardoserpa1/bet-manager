@@ -1,11 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import styled from 'styled-components'
+import { createGlobalStyle } from 'styled-components';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter, Routes, Route } from "react-router-dom"
+import Home from './routes/Home';
 
-const GlobalStyle = styled`
-  body {
-    margin: 0;
+const GlobalStyle = createGlobalStyle`
+  html,body {
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden; 
+
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
       'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
       sans-serif;
@@ -22,9 +29,14 @@ const GlobalStyle = styled`
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <GlobalStyle>
-      
-    </GlobalStyle>
+    <GlobalStyle />
+
+    <BrowserRouter>
+      <Routes>
+      <Route path='/home' element={<Home />}></Route>
+      </Routes>
+    </BrowserRouter>
+    
   </React.StrictMode>
 );
 
