@@ -30,14 +30,6 @@ public class SortitionController {
         return new ResponseEntity<>(allSortitions, HttpStatus.OK);
     }
 
-    @PostMapping("/createPredefined")
-    public ResponseEntity<SortitionModel> createPredefined(@RequestBody SortitionDTO sortitionDTO){
-        SortitionModel sortitionModel = new SortitionModel();
-        BeanUtils.copyProperties(sortitionDTO,sortitionModel);
-        SortitionModel sortitionModelResponse = sortitionService.create(sortitionModel);
-        return new ResponseEntity<>(sortitionModelResponse, HttpStatus.CREATED);
-    }
-
     @PostMapping("/createRandom")
     public ResponseEntity<SortitionModel> createRandom(@RequestBody SortitionDTO sortitionDTO){
         SortitionModel sortitionModel = new SortitionModel();
@@ -51,14 +43,6 @@ public class SortitionController {
     public ResponseEntity<SortitionModel> addRandomNumberById(@PathVariable(value = "id") Integer sortitionId){
         SortitionModel sortitionModel = sortitionService.getById(sortitionId);
         SortitionModel sortitionModelResponse = sortitionService.addRandomNumber(sortitionModel);
-        return new ResponseEntity<>(sortitionModelResponse, HttpStatus.OK);
-    }
-
-    @PutMapping("/addPredefinedNumberById/{id},{predefinedNumber}")
-    public ResponseEntity<SortitionModel> addPredefinedNumberById(@PathVariable(value = "id") Integer sortitionId,
-                                                                  @PathVariable(value = "predefinedNumber") Integer predefinedNumber){
-        SortitionModel sortitionModel = sortitionService.getById(sortitionId);
-        SortitionModel sortitionModelResponse = sortitionService.addPredefinedNumber(sortitionModel,predefinedNumber);
         return new ResponseEntity<>(sortitionModelResponse, HttpStatus.OK);
     }
 

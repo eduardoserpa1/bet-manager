@@ -181,7 +181,11 @@ public class BetServiceTest {
         bet2.setIdSortition(1);
         bet2.setNumbers("1,2,3,4,5");
         bet2.setIsWinner(true);
-        bets.add(bet2);
+        betsMock.add(bet2);
+
+        Mockito.when(processingService.containsNumbers(sortition.getNumbers(),bet.getNumbers())).thenReturn(true);
+        Mockito.when(betRepository.saveAll(bets)).thenReturn(betsMock);
+
 
         var result = betService.setWinners(bets, sortition);
 

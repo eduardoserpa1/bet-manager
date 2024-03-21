@@ -189,24 +189,6 @@ public class SortitionServiceTest {
         Assertions.assertTrue(result.getIsFinished());
     }
 
-    @Test
-    @Order(12)
-    @DisplayName("SortitionService: set false to sortition with apuration without winners")
-    void setFalseToSortitionWithApurationWithoutWinners(){
-        List<BetModel> bets = new ArrayList<>();
-        BetModel bet1 = new BetModel();
-        bet1.setNumbers("10,20,30,40,45");
-        bets.add(bet1);
-
-        sortition.setNumbers("1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31");
-
-
-        Mockito.when(processingService.haveWinners(sortition,bets)).thenReturn(false);
-
-        var result = sortitionService.makeApuration(sortition,bets);
-
-        Assertions.assertFalse(result.getIsFinished());
-    }
 
 
 

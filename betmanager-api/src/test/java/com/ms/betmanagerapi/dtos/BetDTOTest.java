@@ -16,11 +16,13 @@ public class BetDTOTest {
         bet.setIdUser(1);
         bet.setIdSortition(1);
         bet.setNumbers("1,2,3,4,5");
+        bet.setIsWinner(false);
 
         Assertions.assertInstanceOf(BetDTO.class, bet);
         Assertions.assertEquals(1, bet.getId());
         Assertions.assertEquals(1, bet.getIdUser());
         Assertions.assertEquals(1, bet.getIdSortition());
         Assertions.assertEquals("1,2,3,4,5", bet.getNumbers());
+        Assertions.assertFalse(bet.getIsWinner());
     }
 }

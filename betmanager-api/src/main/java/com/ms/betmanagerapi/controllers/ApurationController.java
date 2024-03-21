@@ -31,7 +31,7 @@ public class ApurationController {
     }
 
     @PostMapping("/setWinners/{id}")
-    public ResponseEntity<List<BetModel>> getWinners(@PathVariable(value = "id") Integer sortitionId){
+    public ResponseEntity<List<BetModel>> setWinners(@PathVariable(value = "id") Integer sortitionId){
         SortitionModel sortitionModel = sortitionService.getById(sortitionId);
         List<BetModel> bets = betService.getAllBetsBySortitionId(sortitionId);
         List<BetModel> winners = betService.setWinners(bets,sortitionModel);

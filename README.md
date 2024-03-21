@@ -1,1 +1,2 @@
-# bet manager
+# Bet Manager
+### como executar:

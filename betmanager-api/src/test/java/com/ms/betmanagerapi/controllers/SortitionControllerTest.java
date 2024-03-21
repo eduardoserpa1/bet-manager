@@ -54,20 +54,9 @@ public class SortitionControllerTest {
         Assertions.assertEquals(expected, result);
     }
 
+
     @Test
     @Order(2)
-    @DisplayName("SortitionController: create a predefined sortition correclty")
-    void createPredefinedSortitionCorrectly(){
-        ResponseEntity<SortitionModel> expected = new ResponseEntity<>(sortition, HttpStatus.CREATED);
-        SortitionDTO sortitionDTO = new SortitionDTO();
-        BeanUtils.copyProperties(sortition,sortitionDTO);
-        var result = sortitionController.createPredefined(sortitionDTO);
-
-        Assertions.assertEquals(expected, result);
-    }
-
-    @Test
-    @Order(3)
     @DisplayName("SortitionController: create a random sortition correclty")
     void createRandomSortitionCorrectly(){
         ResponseEntity<SortitionModel> expected = new ResponseEntity<>(sortition, HttpStatus.CREATED);
@@ -79,26 +68,7 @@ public class SortitionControllerTest {
     }
 
     @Test
-    @Order(4)
-    @DisplayName("SortitionController: add predefined number to a sortition correclty")
-    void addPredefinedNumberCorrectly(){
-        SortitionModel sortitionMock = sortition;
-        sortitionMock.setNumbers(sortition.getNumbers() + ",10");
-
-        ResponseEntity<SortitionModel> expected = new ResponseEntity<>(sortitionMock, HttpStatus.OK);
-
-        SortitionDTO sortitionDTO = new SortitionDTO();
-        BeanUtils.copyProperties(sortition,sortitionDTO);
-
-        Mockito.when(sortitionService.addPredefinedNumber(sortition,10)).thenReturn(sortitionMock);
-
-        var result = sortitionController.addPredefinedNumberById(1,10);
-
-        Assertions.assertEquals(expected, result);
-    }
-
-    @Test
-    @Order(5)
+    @Order(3)
     @DisplayName("SortitionController: add random number to a sortition correclty")
     void addRandomNumberCorrectly(){
         SortitionModel sortitionMock = sortition;
