@@ -11,6 +11,7 @@ import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -81,5 +82,18 @@ public class BetService {
             return false;
 
         return processingService.validateNumbersIntegrity(split);
+    }
+
+    public List<BetModel> setWinners(List<BetModel> bets, SortitionModel sortitionModel){
+        List<BetModel> winners = new ArrayList<>();
+
+        for (BetModel b : bets){
+            if(processingService.containsNumbers(sortitionModel.getNumbers(),b.getNumbers())) {
+                b.setIsWinner(true);
+                winners.add(b);
+            }
+        }
+
+        return betRepository.saveAll(winners);
     }
 }

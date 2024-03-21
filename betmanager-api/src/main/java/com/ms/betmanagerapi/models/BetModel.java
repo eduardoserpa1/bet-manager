@@ -25,4 +25,7 @@ public class BetModel {
 
     @NotNull
     private Integer idSortition;
+
+    @NotNull
+    private Boolean isWinner;
 }

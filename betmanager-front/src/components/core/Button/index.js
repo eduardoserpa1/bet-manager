@@ -12,7 +12,7 @@ const Button = styled(Link)`
 
     border-radius: 20px;
 
-    margin:2% 10% 2% 10%;
+    margin:2% 2% 2% 2%;
 
     color: white;
     text-shadow: 0px 0px 20px #007a43;

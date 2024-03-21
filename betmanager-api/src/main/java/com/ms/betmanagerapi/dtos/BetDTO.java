@@ -1,6 +1,7 @@
 package com.ms.betmanagerapi.dtos;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 @Data
@@ -13,5 +14,6 @@ public class BetDTO {
     private Integer idUser;
     @NotBlank
     private Integer idSortition;
-
+    @NotBlank
+    private Boolean isWinner;
 }

@@ -43,11 +43,13 @@ public class BetServiceTest {
         user.setId(1);
         sortition = new SortitionModel();
         sortition.setId(1);
+        sortition.setNumbers("1,2,3,4,5");
 
         bet = new BetModel();
         bet.setIdUser(1);
         bet.setIdSortition(1);
         bet.setNumbers("1,2,3,4,5");
+        bet.setIsWinner(false);
 
         List<UserModel> users = new ArrayList<>();
         List<SortitionModel> sortitions = new ArrayList<>();
@@ -164,6 +166,26 @@ public class BetServiceTest {
         var result = betService.getAllBetsBySortitionId(bet.getIdSortition());
 
         Assertions.assertEquals(bets, result);
+    }
+
+    @Test
+    @Order(10)
+    @DisplayName("BetService: set winners set and return correctly")
+    void setWinnersSetAndReturnCorrectly(){
+        List<BetModel> bets = new ArrayList<>();
+        bets.add(bet);
+
+        List<BetModel> betsMock = new ArrayList<>();
+        BetModel bet2 = new BetModel();
+        bet2.setIdUser(1);
+        bet2.setIdSortition(1);
+        bet2.setNumbers("1,2,3,4,5");
+        bet2.setIsWinner(true);
+        bets.add(bet2);
+
+        var result = betService.setWinners(bets, sortition);
+
+        Assertions.assertEquals(betsMock, result);
     }
 
 }

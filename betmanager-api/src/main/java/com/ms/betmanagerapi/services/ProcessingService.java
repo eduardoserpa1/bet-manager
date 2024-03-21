@@ -30,6 +30,7 @@ public class ProcessingService {
 
     public Boolean haveWinners(SortitionModel sortitionModel, List<BetModel> bets){
 
+
         for (BetModel bet : bets){
             if(containsNumbers(sortitionModel.getNumbers(), bet.getNumbers()))
                 return true;
@@ -56,12 +57,12 @@ public class ProcessingService {
     public Boolean containsNumbers(String n1, String n2){
         String[] s1 = n1.split(",");
         String[] s2 = n2.split(",");
-        
+
         int count = 0;
 
         for (int i = 0; i < s1.length; i++) {
             for (int j = 0; j < s2.length; j++) {
-                if(s1[i].equals(s2[j])) {
+                if (s1[i].equals(s2[j])) {
                     count++;
                     j = s2.length;
                 }

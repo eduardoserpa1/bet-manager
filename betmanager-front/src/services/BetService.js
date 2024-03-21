@@ -12,7 +12,8 @@ async function create(idsortition,iduser,numbers){
     const body = {
         "idSortition": idsortition,
         "idUser": iduser,
-        "numbers": numbers
+        "numbers": numbers,
+        "isWinner": false
     }
 
     const response = await betAPI.post("/create", body);
@@ -20,7 +21,21 @@ async function create(idsortition,iduser,numbers){
     return response.data;
 }
 
+async function createLittleSurprise(idsortition,iduser){
+    const body = {
+        "idSortition": idsortition,
+        "idUser": iduser,
+        "numbers": "1,1,1,1,1",
+        "isWinner": false
+    }
+
+    const response = await betAPI.post("/createLittleSurprise", body);
+
+    return response.data;
+}
+
 export{
     getAll,
-    create
+    create,
+    createLittleSurprise
 }

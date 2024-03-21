@@ -29,4 +29,12 @@ public class ApurationController {
         SortitionModel sortitionModelResponse = sortitionService.makeApuration(sortitionModel, bets);
         return new ResponseEntity<>(sortitionModelResponse, HttpStatus.OK);
     }
+
+    @PostMapping("/setWinners/{id}")
+    public ResponseEntity<List<BetModel>> getWinners(@PathVariable(value = "id") Integer sortitionId){
+        SortitionModel sortitionModel = sortitionService.getById(sortitionId);
+        List<BetModel> bets = betService.getAllBetsBySortitionId(sortitionId);
+        List<BetModel> winners = betService.setWinners(bets,sortitionModel);
+        return new ResponseEntity<>(winners, HttpStatus.OK);
+    }
 }

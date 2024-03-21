@@ -10,7 +10,7 @@ const SubTitle = styled.span`
     width: 60%;
     text-align: center;
 
-    color: white;
+    color: ${props => props.textcolor || 'white'};
     text-shadow: 0px 0px 20px #007a43;
 `
 //'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue'

@@ -41,13 +41,14 @@ function Bet(){
                     <MediumTitle>Apostas</MediumTitle>
                     { 
                         bets.length !== 0 ? bets.map( bet => (
-                            <ListItem routerequest={"home"} idrequest={""} name={"Aposta "+bet.id} text={bet.numbers}/>
+                            <ListItem routerequest={"bet"} idrequest={params.id} name={"Aposta "+bet.id} text={bet.numbers}/>
                         )) : null
                     }
                 </ListBlock>
                 
                 <NavigationBar>
                     <Button to={"/home"}>Voltar</Button>
+                    <Button to={"/apuration/"+params.id}>Apuração</Button>
                     <Button to={"/newbet/"+params.id}>Nova aposta</Button>
                 </NavigationBar>
             </ContentBlock>

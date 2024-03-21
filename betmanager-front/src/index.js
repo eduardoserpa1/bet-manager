@@ -7,20 +7,24 @@ import Welcome from './routes/Welcome';
 import Home from './routes/Home';
 import Bet from './routes/Bet';
 import NewBet from './routes/NewBet';
+import Apuration from './routes/Apuration';
+import Result from './routes/Result';
 
 const GlobalStyle = createGlobalStyle`
-  html,body {
-    width: 100vw;
-    height: 100vh;
-    margin: 0px;
-    padding: 0px;
-    overflow-x: hidden; 
-
+  html{
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
       'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
       sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+  }
+
+  body{
+    width: 100vw;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden;
+    background-color: #66ad8d;
   }
 
   code {
@@ -38,13 +42,15 @@ root.render(
 
     <BrowserRouter>
       <Routes>
-      <Route path='/' element={<Welcome />}></Route>
-      <Route path='/home' element={<Home />}></Route>
-      <Route path='/bet/:id' element={<Bet />}></Route>
-      <Route path='/newbet/:id' element={<NewBet />}></Route>
+        <Route path='/' element={<Welcome />}></Route>
+        <Route path='/home' element={<Home />}></Route>
+        <Route path='/bet/:id' element={<Bet />}></Route>
+        <Route path='/newbet/:id' element={<NewBet />}></Route>
+        <Route path='/apuration/:id' element={<Apuration />}></Route>
+        <Route path='/result/:id' element={<Result />}></Route>
       </Routes>
     </BrowserRouter>
-    
+
   </React.StrictMode>
 );
 
