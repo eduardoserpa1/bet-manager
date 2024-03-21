@@ -52,9 +52,10 @@ function ListItem(props){
     
     const idRequest = props.idrequest;
     const routeRequest = props.routerequest;
+    const sortitionStatus = props.sortitionstatus;
     
     return(
-        <ListItemContainer to={"/"+ routeRequest + "/" + idRequest}>
+        <ListItemContainer to={"/"+ routeRequest + "/" + idRequest + "/" + sortitionStatus}>
             <ListItemName>{props.name}</ListItemName>
             <ListItemStatus textcolor={statusColor}>{statusText}</ListItemStatus>
         </ListItemContainer>

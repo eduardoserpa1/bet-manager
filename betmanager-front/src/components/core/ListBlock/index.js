@@ -7,6 +7,7 @@ const ListBlock = styled.div`
     margin-top: 1%;
     margin-bottom: 1%;
     padding-top: 10px;
+    padding-bottom: 10px;
 
     display: flex;
     flex-direction: column;

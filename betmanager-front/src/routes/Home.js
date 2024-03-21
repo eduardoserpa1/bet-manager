@@ -43,7 +43,7 @@ function Home(){
                     <MediumTitle>Sorteios</MediumTitle>
                     { 
                         sortitions.length !== 0 ? sortitions.map( sortition => (
-                            <ListItem routerequest={"bet"} idrequest={sortition.id} name={"Sorteio número "+sortition.id} text={sortition.isFinished.toString()}/>
+                            <ListItem routerequest={"bet"} idrequest={sortition.id} sortitionstatus={sortition.isFinished.toString()} name={"Sorteio número "+sortition.id} text={sortition.isFinished.toString()}/>
                         )) : null
                     }
                 </ListBlock>

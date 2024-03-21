@@ -2,7 +2,7 @@ import axios from "axios";
 
 const betAPI = axios.create({baseURL: "http://localhost:8080/bet"});
 
-async function getAll(){
+async function getAllBets(){
     const response = await betAPI.get("/");
 
     return response.data;
@@ -35,7 +35,7 @@ async function createLittleSurprise(idsortition,iduser){
 }
 
 export{
-    getAll,
+    getAllBets,
     create,
     createLittleSurprise
 }

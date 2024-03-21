@@ -7,7 +7,7 @@ import MediumTitle from '../components/core/MediumTitle';
 import ListBlock from '../components/core/ListBlock';
 import ListItem from '../components/core/ListItem';
 import { useEffect, useState } from 'react';
-import { getAll } from '../services/BetService';
+import { getAllBets } from '../services/BetService';
 import { useParams } from 'react-router';
 import NavigationBar from '../components/core/NavigationBar';
 
@@ -17,7 +17,7 @@ function Bet(){
     const params = useParams();
 
     async function fetchBets(){
-        const betResponse = await getAll();
+        const betResponse = await getAllBets();
         const betResponseFilter = betResponse.filter(bet => bet.idSortition == params.id)
         setBets(betResponseFilter)
     }
@@ -41,15 +41,34 @@ function Bet(){
                     <MediumTitle>Apostas</MediumTitle>
                     { 
                         bets.length !== 0 ? bets.map( bet => (
-                            <ListItem routerequest={"bet"} idrequest={params.id} name={"Aposta "+bet.id} text={bet.numbers}/>
+                            <ListItem routerequest={"bet"} idrequest={params.id} sortitionstatus={params.statusSortition} name={"Aposta "+bet.id} text={bet.numbers}/>
                         )) : null
                     }
                 </ListBlock>
                 
                 <NavigationBar>
                     <Button to={"/home"}>Voltar</Button>
-                    <Button to={"/apuration/"+params.id}>Apuração</Button>
-                    <Button to={"/newbet/"+params.id}>Nova aposta</Button>
+                    
+                    {   
+                        bets.length > 0 
+                        ?
+                            params.statusSortition == "true" 
+                            ? 
+                            <Button to={"/result/" + params.id + "/" + params.statusSortition}>Resultados</Button> 
+                            : 
+                            <Button to={"/apuration/" + params.id + "/" + params.statusSortition}>Apuração</Button>
+                        :
+                        null
+                    }
+
+                    {   
+                        params.statusSortition == "false" 
+                        ? 
+                        <Button to={"/newbet/"+params.id+"/"+params.statusSortition}>Nova aposta</Button>
+                        : 
+                        null
+                    }
+                    
                 </NavigationBar>
             </ContentBlock>
         </PageContainer>

@@ -4,9 +4,6 @@ import Title from '../components/core/Title';
 import SubTitle from '../components/core/SubTitle';
 import Button from '../components/core/Button';
 import MediumTitle from '../components/core/MediumTitle';
-import ListBlock from '../components/core/ListBlock';
-import ListItem from '../components/core/ListItem';
-import { useEffect, useState } from 'react';
 import { makeApuration, setWinners } from '../services/ApurationService';
 import { useParams } from 'react-router';
 import NavigationBar from '../components/core/NavigationBar';
@@ -36,9 +33,21 @@ function Apuration() {
                 <SubTitle>Ao clicar no botão resultados, é exibido um relatório com todas as informações solicitadas na funcionalidade [Fim da Apuração]</SubTitle>
 
                 <NavigationBar>
-                    <Button to={"/home"}>Voltar</Button>
-                    <Button to={"/result/" + params.id}>Resultados</Button>
-                    <Button to={"/apuration/" + params.id} onClick={make}>Finalizar</Button>
+                    <Button to={"/bet/" + params.id + "/" + params.statusSortition}>Voltar</Button>
+                    {
+                        params.statusSortition == "true"
+                        ?
+                        <Button to={"/result/" + params.id + "/" + params.statusSortition}>Resultados</Button>
+                        :
+                        null
+                    }
+                    {
+                        params.statusSortition == "false"
+                        ?
+                        <Button to={"/apuration/" + params.id + "/" + true} onClick={make}>Finalizar</Button>
+                        :
+                        null
+                    }
                 </NavigationBar>
             </ContentBlock>
         </PageContainer>

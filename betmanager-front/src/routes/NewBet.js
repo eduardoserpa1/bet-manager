@@ -4,10 +4,8 @@ import Title from '../components/core/Title';
 import SubTitle from '../components/core/SubTitle';
 import Button from '../components/core/Button';
 import MediumTitle from '../components/core/MediumTitle';
-import ListBlock from '../components/core/ListBlock';
-import ListItem from '../components/core/ListItem';
-import { useEffect, useState } from 'react';
-import { getAll, create, createLittleSurprise } from '../services/BetService';
+import { useState } from 'react';
+import { create, createLittleSurprise } from '../services/BetService';
 import { createUser } from '../services/UserService';
 import { useParams } from 'react-router';
 import NavigationBar from '../components/core/NavigationBar';
@@ -132,7 +130,7 @@ function NewBet() {
                 </LabelForm>
 
                 <NavigationBar>
-                    <Button to={"/bet/" + params.id}>Voltar</Button>
+                    <Button to={"/bet/" + params.id + "/" + params.statusSortition}>Voltar</Button>
                     <Button onClick={validate}>Registrar</Button>
                 </NavigationBar>
             </ContentBlock>

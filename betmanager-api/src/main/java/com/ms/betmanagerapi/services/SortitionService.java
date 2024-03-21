@@ -60,12 +60,8 @@ public class SortitionService {
             sortitionModel = addRandomNumber(sortitionModel);
             count++;
         }
-        if (count < 25)
-            sortitionModel.setIsFinished(true);
-
-        sortitionRepository.save(sortitionModel);
-
-        return sortitionModel;
+        sortitionModel.setIsFinished(true);
+        return sortitionRepository.save(sortitionModel);
     }
 
     public SortitionModel createRandom(SortitionModel sortitionModel){

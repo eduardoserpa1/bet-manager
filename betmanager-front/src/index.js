@@ -44,10 +44,10 @@ root.render(
       <Routes>
         <Route path='/' element={<Welcome />}></Route>
         <Route path='/home' element={<Home />}></Route>
-        <Route path='/bet/:id' element={<Bet />}></Route>
-        <Route path='/newbet/:id' element={<NewBet />}></Route>
-        <Route path='/apuration/:id' element={<Apuration />}></Route>
-        <Route path='/result/:id' element={<Result />}></Route>
+        <Route path='/bet/:id/:statusSortition' element={<Bet />}></Route>
+        <Route path='/newbet/:id/:statusSortition' element={<NewBet />}></Route>
+        <Route path='/apuration/:id/:statusSortition' element={<Apuration />}></Route>
+        <Route path='/result/:id/:statusSortition' element={<Result />}></Route>
       </Routes>
     </BrowserRouter>
 
