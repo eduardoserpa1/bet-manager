@@ -1,0 +1,306 @@
+{
+	"info": {
+		"_postman_id": "79d10e70-064b-4aac-8dd2-9150dab31ee6",
+		"name": "betmanager-restapi-collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15307382"
+	},
+	"item": [
+		{
+			"name": "sortition",
+			"item": [
+				{
+					"name": "get all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/sortition/",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"sortition",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addRandomNumberById",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/sortition/addRandomNumberById/602",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"sortition",
+								"addRandomNumberById",
+								"602"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createRandom",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"numbers\":\"1,1,1,1,1\",\r\n    \"isFinished\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/sortition/createRandom",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"sortition",
+								"createRandom"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "bet",
+			"item": [
+				{
+					"name": "get all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/bet/",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"bet",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"id\": 2001,\r\n        \"numbers\": \"13,35,8,16,31\",\r\n        \"idUser\": 602,\r\n        \"idSortition\": 1002,\r\n        \"isWinner\": true\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/bet/create",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"bet",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "setWinners",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"numbers\":\"11,22,33,44,50\",\r\n    \"idUser\": 452,\r\n    \"idSortition\": 902\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/apuration/setWinners/1152",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"apuration",
+								"setWinners",
+								"1152"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createLittleSurprise",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"numbers\":\"1,2,3,4,5\",\r\n    \"idUser\": 252,\r\n    \"idSortition\": 402\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/bet/createLittleSurprise",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"bet",
+								"createLittleSurprise"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "get all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/user/",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"usuario de teste 1\",\r\n    \"cpf\":\"11122233300\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/user/create",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user",
+								"create"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "apuration",
+			"item": [
+				{
+					"name": "makeApuration",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"usuario de teste 1\",\r\n    \"cpf\":\"11122233300\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/apuration/makeApuration/752",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"apuration",
+								"makeApuration",
+								"752"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "setWinners",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"usuario de teste 1\",\r\n    \"cpf\":\"11122233300\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/apuration/setWinners/752",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"apuration",
+								"setWinners",
+								"752"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
