@@ -39,38 +39,38 @@ function NewBet() {
     }
 
     const validate = () => {
-        if (cpf.length != 11) {
-            alert("CPF deve ser uma sequencia de 11 números")
-            return
-        }
-
-        if (name.length < 0 && name.length > 255) {
-            alert("Nome não pode estar vazio")
-            return
-        }
-
-        if (surprise) {
-            createSurpriseBet(params.id);
-            return true;
-        } else {
-            if (!numbers.match("^[0-9]{1,2},[0-9]{1,2},[0-9]{1,2},[0-9]{1,2},[0-9]{1,2}$")) {
-                alert("Os números devem ser separados por vírgula e conter exatamente 5 (cinco) números, com valores entre 1 e 50. Ex: 1,2,3,4,5 ou 10,20,30,40,50")
-                return;
-            } else {
-                if (validateRange(numbers)) {
-                    if (haveDuplicates(numbers)) {
-                        alert("Apostas não podem contem números duplicados")
+        if (name.length > 1 && name.length < 255) {
+            if (cpf.length === 11) {
+                if (surprise) {
+                    createSurpriseBet(params.id);
+                    return true;
+                } else {
+                    if (!numbers.match("^[0-9]{1,2},[0-9]{1,2},[0-9]{1,2},[0-9]{1,2},[0-9]{1,2}$")) {
+                        alert("Os números devem ser separados por vírgula e conter exatamente 5 (cinco) números, com valores entre 1 e 50. Ex: 1,2,3,4,5 ou 10,20,30,40,50")
                         return;
                     } else {
-                        alert("Apostas enviada para registro")
-                        createBet(params.id, numbers);
-                        return true;
+                        if (validateRange(numbers)) {
+                            if (haveDuplicates(numbers)) {
+                                alert("Aposta não pode conter números duplicados")
+                                return;
+                            } else {
+                                alert("Aposta enviada para registro")
+                                createBet(params.id, numbers);
+                                return true;
+                            }
+                        } else {
+                            alert("Os números devem ser valores entre 1 a 50")
+                            return;
+                        }
                     }
-                } else {
-                    alert("Os números devem ser valores entre 1 a 50")
-                    return;
                 }
+            } else {
+                alert("CPF deve ser uma sequencia de exatamente 11 caracteres")
+                return
             }
+        } else {
+            alert("Nome deve possuir entre 1 a 255 caracteres")
+            return
         }
     }
 
